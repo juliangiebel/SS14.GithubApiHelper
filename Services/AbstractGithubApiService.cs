@@ -7,7 +7,7 @@ using ILogger = Serilog.ILogger;
 
 namespace SS14.GithubApiHelper.Services;
 
-public abstract class GithubApiService
+public abstract class AbstractGithubApiService
 {
     protected readonly GithubAppApiClientStore? ClientStore;
     protected readonly IssueRateLimiterService RateLimiter;
@@ -15,12 +15,12 @@ public abstract class GithubApiService
 
     protected readonly ILogger Log;
 
-    protected GithubApiService(IConfiguration configuration, IssueRateLimiterService rateLimiter)
+    protected AbstractGithubApiService(IConfiguration configuration, IssueRateLimiterService rateLimiter)
     {
         configuration.Bind(GithubConfiguration.Name, Configuration);
         RateLimiter = rateLimiter;
 
-        Log = Serilog.Log.ForContext(typeof(GithubApiService));
+        Log = Serilog.Log.ForContext(typeof(AbstractGithubApiService));
 
         if (!Configuration.Enabled)
             return;
