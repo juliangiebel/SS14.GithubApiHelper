@@ -2,12 +2,12 @@
 
 namespace SS14.GithubApiHelper.Services;
 
-public sealed class IssueRateLimiterService : IDisposable
+public sealed class RateLimiterService : IDisposable
 {
     private readonly Dictionary<long, RateLimiter> _rateLimiters = new();
     private readonly TokenBucketRateLimiterOptions _options;
 
-    public IssueRateLimiterService()
+    public RateLimiterService()
     {
         _options = new TokenBucketRateLimiterOptions
         {

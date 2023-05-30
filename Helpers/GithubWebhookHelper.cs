@@ -2,6 +2,7 @@
 using System.Text;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
+using Serilog;
 
 namespace SS14.GithubApiHelper.Helpers;
 
@@ -68,7 +69,15 @@ public static class GithubWebhookHelper
 
     public async static Task<string> RetrievePayload(HttpRequest request)
     {
-        request.Body.Position = 0;
+        try
+        {
+            request.Body.Position = 0;
+        }
+        catch (NotSupportedException)
+        {
+            Log.Error("Request body doesn't support rewinding. Request.EnableBuffering() needs to be called first.");
+            throw;
+        }
 
         using var reader = new StreamReader(request.Body, leaveOpen: true);
         return await reader.ReadToEndAsync();

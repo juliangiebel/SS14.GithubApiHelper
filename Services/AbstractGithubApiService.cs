@@ -10,12 +10,12 @@ namespace SS14.GithubApiHelper.Services;
 public abstract class AbstractGithubApiService
 {
     protected readonly GithubAppApiClientStore? ClientStore;
-    protected readonly IssueRateLimiterService RateLimiter;
+    protected readonly RateLimiterService RateLimiter;
     protected readonly GithubConfiguration Configuration = new();
 
     protected readonly ILogger Log;
 
-    protected AbstractGithubApiService(IConfiguration configuration, IssueRateLimiterService rateLimiter)
+    protected AbstractGithubApiService(IConfiguration configuration, RateLimiterService rateLimiter)
     {
         configuration.Bind(GithubConfiguration.Name, Configuration);
         RateLimiter = rateLimiter;
