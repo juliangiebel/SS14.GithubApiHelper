@@ -87,7 +87,7 @@ public sealed class GithubTemplateService
             CultureInfo = culture,
             Options =
             {
-                Greedy = true
+                MemberAccessStrategy = new UnsafeMemberAccessStrategy()
             }
         };
 
