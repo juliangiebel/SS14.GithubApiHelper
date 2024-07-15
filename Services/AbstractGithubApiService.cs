@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Octokit;
 using SS14.GithubApiHelper.Configuration;
+using SS14.GithubApiHelper.Exceptions;
 using SS14.GithubApiHelper.Helpers;
-using SS14.MapServer.Exceptions;
 using ILogger = Serilog.ILogger;
 
 namespace SS14.GithubApiHelper.Services;

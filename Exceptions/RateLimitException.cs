@@ -1,4 +1,4 @@
-﻿namespace SS14.MapServer.Exceptions;
+﻿namespace SS14.GithubApiHelper.Exceptions;
 
 public sealed class RateLimitException : Exception
 {
